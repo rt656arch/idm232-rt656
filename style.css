@@ -11,7 +11,24 @@
     font-family: CherryBombOne;
     src: url('CherryBombOne-Regular.woff2') format('woff2');
 }
+@font-face {
+    font-family: Nunito;
+    src: url('Nunito-VariableFont_wght.woff2') format('woff2');
+}
 
+:root {
+    --background: #abd1c6;
+    --card-outline: #004643;
+    --headline: #001e1d;
+    --sub-headline: #0f3433;
+    --card-paragraph: #abd1c6;
+    --tertiary: #e16162;
+    --card-heading: #fffffe;
+    --section-background: #e8e4e6;
+}
+body {
+    background-color: var(--background);
+}
 /* nav bar */
 .navbar {
     display: flex;
@@ -36,7 +53,7 @@
 .navbar-logo {
     font-size: 2rem;
     font-weight: 600;
-    color: #3e3e3e;
+    color: var(--card-outline);
     text-decoration: none;
     cursor: pointer;
     font-family: 'molle', sans-serif;
@@ -55,12 +72,12 @@
     padding: 3px 20px;
     border-radius: 20px;
     border: 2px solid transparent;
-    transition: all 0.7s ease;
+    transition: all 0.3s ease;
     white-space: nowrap;
 
 }
 .navbar-container .navbar-menu li a:hover {
-    color:blue;
+    color:var(--tertiary);
     /* adds a background capsule shape, can make a decision on design later */
     /* background: rgba(188, 212, 229, 0.8);
     border: 2px solid #fff; */
@@ -85,9 +102,10 @@
 .search-bar {
     display: flex;
     align-items: center;
-    border: 2px solid black;
+    border: 2px solid var(--headline);
     border-radius: 20px;
     margin: 80px 10rem;
+
     
 }
 .search-bar input{
@@ -97,6 +115,7 @@
     border-radius: 20px;
     border: none;
     outline: none;
+    background-color: var(--background);
 }
 .search-bar button {
     font-size: 17px;
@@ -104,7 +123,7 @@
     padding: 10px;
     border-radius: 0px 5px 5px 0px;
     border: none;
-    background-color: white;
+    background-color: var(--background);
     cursor: pointer;
     outline: none;
     background-image: url(images/try2.png);
@@ -133,6 +152,7 @@ img {
     justify-content: center;
     font-family: 'CherryBombOne';
     margin-left: 8rem;
+    color: var(--headline);
 }
 .titleText h1 {
     font-size: 50px;
@@ -149,9 +169,18 @@ img {
 section {
     margin: 8rem;
 }
+section h2 {
+    color: var(--headline);
+}
+.home-recipes {
+    background-color: var(--section-background);
+    padding: 3rem;
+    border-radius: 10px;
+    font-family: 'Nunito';
+}
 .newRecipeContainer {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     margin-top: 24px;
     margin-bottom: 24px;
     gap: 24px;
@@ -160,9 +189,11 @@ section {
     /* margin: 24px 24px 24px 0;
     margin-right: 24px; */
     border-radius: 12px;
-    border: 2px solid green;
+    border: 2px solid var(--card-outline);
     max-width: 300px;
     flex: 1 1 250px;
+    background-color: var(--card-outline);
+    color: var(--card-paragraph);
 }
 .recipeImg {
     border-radius: 10px;
@@ -356,11 +387,5 @@ section {
     }
 }
 
-@media screen and (min-width: 1300px) {
-    .newRecipeContainer {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        justify-items: center;
-    }
-}
+
 
