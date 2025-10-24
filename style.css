@@ -275,7 +275,6 @@ hr {
     border-radius: 10px;
     margin: 12rem;
     margin-top: 2rem;
-    padding: 4rem;
     font-family: 'Nunito';
 }
 .help-body h3 {
@@ -325,8 +324,6 @@ hr {
 
 }
 
-
-
 @media screen and (min-width: 330px) {
     section {
         margin: 1rem;
@@ -369,6 +366,10 @@ hr {
     .recipe-info .ingredients {
         margin-bottom: 0;
     }
+    .help-body {
+        padding: 1rem;
+        margin: 4rem;
+    }
 }
 
 @media screen and (min-width: 600px) {
@@ -380,7 +381,10 @@ hr {
     section {
         margin: 6rem;
     }
-    
+    .help-body {
+        padding: 2rem;
+        margin: 6rem;
+    }
     
 }
 
@@ -408,6 +412,10 @@ hr {
     }
     .single-title h1 {
         margin-top: 5px;
+    }
+    .help-body {
+        padding: 4rem;
+        margin: 8rem;
     }
     
 }
@@ -443,6 +451,10 @@ hr {
         min-width: 200px; 
         margin-right: 4rem;
     }
+    .help-body {
+        padding: 4rem;
+        margin: 10rem;
+    }
     
 }
 @media screen and (min-width: 1100px) {
@@ -453,6 +465,10 @@ hr {
     }
     section {
         margin: 8rem;
+    }
+    .help-body {
+        padding: 4rem;
+        margin: 12rem;
     }
 }
 
