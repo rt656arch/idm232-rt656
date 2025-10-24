@@ -2,7 +2,14 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0;
-    font-family: sans-serif;
+}
+@font-face {
+    font-family: molle;
+    src: url('Molle-Italic.woff2') format('woff2');
+}
+@font-face {
+    font-family: CherryBombOne;
+    src: url('CherryBombOne-Regular.woff2') format('woff2');
 }
 
 /* nav bar */
@@ -32,6 +39,7 @@
     color: #3e3e3e;
     text-decoration: none;
     cursor: pointer;
+    font-family: 'molle', sans-serif;
 }
 .navbar-container .navbar-menu {
     display: flex;
@@ -116,19 +124,25 @@ img {
 .title {
     display: flex;
     justify-content: space-around;
-    margin: 100px;
+    margin: 8rem;
 }
 .titleText {
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: center;
+    font-family: 'CherryBombOne';
+    margin-left: 8rem;
+}
+.titleText h1 {
+    font-size: 50px;
 }
 .titleImg {
     display: flex;
     justify-content: end;
     align-items: end;
     min-width: 200px; 
+    margin-right: 8rem;
 }
 
 /* recipe cards */
@@ -202,8 +216,21 @@ section {
     margin: 2rem;
 }
 
+/* help page */
+.help-body {
+    border: 2px solid #3e3e3e;
+    border-radius: 10px;
+    margin: 12rem;
+    margin-top: 2rem;
+    padding: 4rem;
+}
+.help-body h3 {
+    margin-bottom: 8px;
+}
 
-
+.help-body p {
+    margin-bottom: 15px;
+}
 
 
 @media screen and (max-width:700px) {
@@ -246,9 +273,6 @@ section {
 
 
 @media screen and (min-width: 330px) {
-    .title {
-        margin: 20px;
-    }
     section {
         margin: 1rem;
     }
@@ -256,6 +280,24 @@ section {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         justify-items: center;
+    }
+    .title {
+        display: grid;
+        grid-template-rows: auto auto;
+        margin: 20px;
+        align-self: center;
+        justify-items: center;
+        gap: 4rem;
+        margin-bottom: 4rem;
+    }
+    .titleText {
+        margin: 0;
+        text-align: center;
+    }
+    .titleImg {
+        width: 300px;
+        height: 100%;
+        margin: 0;
     }
 }
 
@@ -268,6 +310,7 @@ section {
     section {
         margin: 6rem;
     }
+    
 }
 
 @media screen and (min-width: 930px) {
@@ -275,6 +318,30 @@ section {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         justify-items: center;
+        
+    }
+    .title {
+        display: flex;
+        justify-content: space-around;
+        margin: 8rem;
+    }
+    .titleText {
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        justify-content: center;
+        font-family: 'CherryBombOne';
+        margin-left: 4rem;
+    }
+    .titleText h1 {
+        font-size: 50px;
+    }
+    .titleImg {
+        display: flex;
+        justify-content: end;
+        align-items: end;
+        min-width: 200px; 
+        margin-right: 4rem;
     }
     
 }
