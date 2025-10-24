@@ -207,13 +207,19 @@ section h2 {
 }
 
 /* single recipe page styling */
-
+.single-container {
+    color: var(--headline);
+}
 .single-title {
     margin: 2rem;
 }
 .single-intro {
     display: flex;
     justify-content: space-between;
+    font-family: 'Nunito';
+}
+.single-intro h1 {
+    font-family: 'CherryBombOne';
 }
 
 .single-intro .single-img {
@@ -223,14 +229,18 @@ section h2 {
  .single-img img {
     border-radius: 10px;
 }
-
+.single-description {
+    margin: 2rem;
+    margin-left: 0;
+}
 .recipe-info {
     display: grid;
     grid-template-columns: auto auto;
     gap: 2rem;
-    border: 2px solid black;
+    border: 2px solid var(--sub-headline);
     border-radius: 10px;
     margin-top: 3rem;
+    font-family: 'Nunito';
 
 }
 
