@@ -22,7 +22,6 @@ $result = $stmt->get_result();
 if ($result && $result->num_rows > 0) {
     $recipe = $result->fetch_assoc();
 
-    // Sanitize output to prevent XSS
     $recipeName = htmlspecialchars($recipe['recipe_heading']);
     $recipeName2 = htmlspecialchars($recipe['recipe_subheading']);
     $description = nl2br(htmlspecialchars($recipe['description']));

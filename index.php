@@ -19,14 +19,14 @@ if (!empty($_GET['search'])) {
 // prepared statement
 
 if ($searchTerm === "") {
-    // Default: get all recipes
+    // get all recipes
     $stmt = $conn->prepare(
         "SELECT recipe_id, recipe_heading, recipe_subheading, hero 
          FROM idm232_recipes 
          ORDER BY recipe_id DESC"
     );
 } else {
-    // Search: filter by heading
+    // filter by heading
     $stmt = $conn->prepare(
         "SELECT recipe_id, recipe_heading, recipe_subheading, hero 
          FROM idm232_recipes 
@@ -38,7 +38,7 @@ if ($searchTerm === "") {
     $stmt->bind_param("s", $like);
 }
 
-// Execute
+// execute
 if ($stmt === false) {
     die("Prepare failed: " . htmlspecialchars($conn->error));
 }
@@ -80,12 +80,11 @@ $conn->close();
     <div class="newRecipeContainer">
 
         <?php
-        // If no results
         if (empty($recipes)) {
             echo "<p>No recipes found.</p>";
         }
 
-        // Show recipes
+        // show recipes
         foreach ($recipes as $recipe) {
             $recipe_id = $recipe['recipe_id'];
             $recipe_heading = $recipe['recipe_heading'];
