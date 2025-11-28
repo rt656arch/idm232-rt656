@@ -35,7 +35,7 @@ $conn->close();
             <p>For your homecooked meals</p>
         </div>
         <div class="titleImg">
-            <img src="title image.png" alt="Cartoon title image">
+            <img src="title_image.png" alt="Cartoon title image">
         </div>
 </section>
 
