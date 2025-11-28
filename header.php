@@ -10,15 +10,15 @@
 <body>  
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="index.html" class="navbar-logo">Recipes</a>
+            <a href="index.php" class="navbar-logo">Recipes</a>
             <button class="navbar-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </button>
             <ul class="navbar-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="help.html">Help</a></li>
+                <li><a href="index.php">Home</a></li>
+                <!-- <li><a href="help.php">Help</a></li> -->
             </ul>
         </div>
     </nav>

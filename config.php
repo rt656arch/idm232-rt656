@@ -22,4 +22,6 @@ function getDBConnection() {
         die("Connection failed: " . $conn->connect_error);
 
     return $conn;
+
+    $connection->close();
 }

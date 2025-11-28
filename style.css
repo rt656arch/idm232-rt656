@@ -190,21 +190,27 @@ section h2 {
 .recipeCard {
     /* margin: 24px 24px 24px 0;
     margin-right: 24px; */
+    display: block;
+    text-decoration: none;
     border-radius: 12px;
     border: 4px solid var(--card-outline);
     max-width: 300px;
     flex: 1 1 250px;
     background-color: var(--card-outline);
     color: var(--card-paragraph);
+    transition: transform 0.2s;
 }
-.recipeImg {
+.recipeCard:hover {
+    transform: scale(1.02);
+}
+.hero-image {
     border-radius: 10px;
 }
-.recipeName {
+.recipe_heading {
     margin: 10px;
     margin-bottom: 30px;
 }
-.recipeName2 {
+.recipe_subheading {
     margin-top: 5px;
 }
 
