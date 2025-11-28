@@ -11,7 +11,7 @@ $conn = getDBConnection();
             <p>For your homecooked meals</p>
         </div>
         <div class="titleImg">
-            <img src="images/title image.png" alt="Cartoon title image">
+            <img src="title image.png" alt="Cartoon title image">
         </div>
     </section>
 
