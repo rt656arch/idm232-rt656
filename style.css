@@ -209,6 +209,7 @@ section h2 {
 .recipe_heading {
     margin: 10px;
     margin-bottom: 30px;
+    color: var(--card-heading);
 }
 .recipe_subheading {
     margin-top: 5px;

@@ -85,16 +85,10 @@ $conn->close();
             $hero = $recipe['hero'];
 
             echo '<div class="recipeCard">';
-
             echo '<a href="single-recipe.php?id=' . $recipe_id . '" style="text-decoration: none; color: inherit;">';
-
-            if (!empty($hero)) {
-                echo '<img src="' . htmlspecialchars($hero) . '" alt="Hero Image" class="hero-image">';
-            }
-
+            echo '<img src="' . htmlspecialchars($recipe['hero']) . '" alt="Hero Image" class="hero-image">';
             echo '<h2 class="recipe_heading">' . htmlspecialchars($recipe_heading) . '</h2>';
             echo '<h3 class="recipe_subheading">' . htmlspecialchars($recipe_subheading) . '</h3>';
-
             echo '</a>';
             echo '</div>';
         }
