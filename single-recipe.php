@@ -1,6 +1,12 @@
 <?php
-include 'header.php';
 require_once 'config.php';
+
+$searchTerm = "";
+if (!empty($_GET['search'])) {
+    $searchTerm = $_GET['search'];
+}
+
+include 'header.php';
 
 $conn = getDBConnection();
 

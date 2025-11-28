@@ -22,7 +22,16 @@
             </ul>
         </div>
     </nav>
-    <div class="search-bar">
+
+    <form action="index.php" method="get" class="search-bar" style="margin-bottom:20px;">
+        <input type="text" name="search" placeholder="Search recipes..." value="<?= htmlspecialchars($searchTerm) ?>">
+        <button type="submit">Search</button>
+    </form>
+    <!-- <form action="index.php" method="get" class="search-bar">
+        <input type="text" name="search" placeholder="Search..." value="">
+        <button type="submit">Search</button>
+    </form> -->
+    <!-- <div class="search-bar">
             <input type="text" placeholder="Search...">
             <button type="submit"></button>
-    </div>
+    </div> -->

@@ -1,0 +1,4 @@
+SetEnv DB_HOST localhost
+SetEnv DB_USER rt656
+SetEnv DB_PASS c0ma2eglQOz3p3Lf
+SetEnv DB_NAME rt656_db
