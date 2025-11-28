@@ -17,7 +17,7 @@
                 <span class="bar"></span>
             </button>
             <ul class="navbar-menu">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="all-recipe.php">All Recipes</a></li>
                 <!-- <li><a href="help.php">Help</a></li> -->
             </ul>
         </div>

@@ -292,6 +292,42 @@ hr {
 }
 
 
+.filter-bar {
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    margin: 20px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+
+.pill:hover {
+    border: 2px solid var(--card-outline);
+}
+
+.pill {
+    padding: 8px 14px;
+    border-radius: 20px;
+    background: var(--section-background);
+    color: var(--card-outline);
+    text-decoration: none;
+    margin-right: 6px;
+    display: inline-block;
+    border: 2px solid transparent;
+}
+
+.pill.active {
+    background: var(--sub-headline);
+    color: white;
+    font-weight: bold;
+}
+
+
+
+
 @media screen and (max-width:700px) {
     .navbar {
         backdrop-filter: none;
