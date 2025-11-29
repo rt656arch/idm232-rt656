@@ -17,14 +17,14 @@
 }
 
 :root {
-    --background: #abd1c6;
-    --card-outline: #004643;
+    --background: #fec7d7;
+    --card-outline: #a786df;
     --headline: #001e1d;
     --sub-headline: #0f3433;
     --card-paragraph: #abd1c6;
     --tertiary: #e16162;
-    --card-heading: #fffffe;
-    --section-background: #e8e4e6;
+    --card-heading: #001e1d;
+    --section-background: #fec7d7;
 }
 body {
     background-color: var(--background);
