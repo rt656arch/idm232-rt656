@@ -1,6 +1,4 @@
 <?php
-// recipecard.php
-// Expects $recipe array to be available
 $recipe_id = htmlspecialchars($recipe['recipe_id']);
 $recipe_heading = htmlspecialchars($recipe['recipe_heading']);
 $recipe_subheading = htmlspecialchars($recipe['recipe_subheading']);

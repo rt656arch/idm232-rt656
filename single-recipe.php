@@ -4,21 +4,19 @@ include 'header.php';
 
 $conn = getDBConnection();
 
-// Validate recipe ID using techniques from notes
 $recipe_id = $_GET['id'] ?? 0;
 
-// Check if it's numeric and positive (from your notes' pattern)
 if (!is_numeric($recipe_id) || $recipe_id <= 0) {
     echo "<p>Invalid recipe ID.</p>";
     exit;
 }
 
-// Cast to integer for safety
+
 $recipe_id = (int)$recipe_id;
 
 $stmt = $conn->prepare("SELECT * FROM idm232_recipes WHERE recipe_id = ?");
 $stmt->bind_param("i", $recipe_id);
-// ... rest of code
+
 $stmt->execute();
 $result = $stmt->get_result();
 

@@ -18,7 +18,7 @@ $conn = getDBConnection();
 $allowedTypes = ['chicken', 'beef', 'pork', 'vegetarian', 'seafood'];
 
 if ($searchTerm !== "") {
-    // SEARCH logic - Use CONCAT for efficiency
+
     $stmt = $conn->prepare(
         "SELECT recipe_id, recipe_heading, recipe_subheading, hero, category, description, steps, ingredients
          FROM idm232_recipes 
@@ -30,7 +30,7 @@ if ($searchTerm !== "") {
     $stmt->bind_param("s", $like);
 
 } elseif ($filterType !== "" && in_array($filterType, $allowedTypes)) {
-    // CATEGORY FILTER logic
+    // category filtering
     $stmt = $conn->prepare(
         "SELECT recipe_id, recipe_heading, recipe_subheading, hero, category, description, steps, ingredients
          FROM idm232_recipes
@@ -41,7 +41,7 @@ if ($searchTerm !== "") {
     $stmt->bind_param("s", $filterType);
 
 } else {
-    // ALL recipes
+
     $stmt = $conn->prepare(
         "SELECT recipe_id, recipe_heading, recipe_subheading, hero, category, description, steps, ingredients
          FROM idm232_recipes 

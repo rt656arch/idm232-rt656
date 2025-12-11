@@ -4,7 +4,7 @@ include 'header.php';
 
 $conn = getDBConnection();
 
-// Get search term
+
 $searchTerm = $_GET['search'] ?? '';
 $searchTerm = trim($searchTerm);
 
@@ -13,7 +13,7 @@ if ($searchTerm === '') {
     exit;
 }
 
-// Prepared statement - Search multiple fields using CONCAT
+
 $stmt = $conn->prepare(
     "SELECT recipe_id, recipe_heading, recipe_subheading, hero 
      FROM idm232_recipes 

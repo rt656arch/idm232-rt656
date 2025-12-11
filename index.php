@@ -4,7 +4,7 @@ include 'header.php';
 
 $conn = getDBConnection();
 
-// Get newest 10 recipes
+
 $stmt = $conn->prepare(
     "SELECT recipe_id, recipe_heading, recipe_subheading, hero, description, steps
      FROM idm232_recipes 
@@ -12,7 +12,7 @@ $stmt = $conn->prepare(
      LIMIT 10"
 );
 
-// Execute
+
 if ($stmt === false) {
     die("Prepare failed: " . htmlspecialchars($conn->error));
 }
@@ -26,7 +26,7 @@ if (!$result) {
     die("Getting result failed: " . htmlspecialchars($stmt->error));
 }
 
-// Get recipes
+
 $recipes = [];
 while ($row = $result->fetch_assoc()) {
     $recipes[] = $row;
