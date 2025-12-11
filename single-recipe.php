@@ -1,23 +1,26 @@
 <?php
 require_once 'config.php';
-
-$searchTerm = "";
-if (!empty($_GET['search'])) {
-    $searchTerm = $_GET['search'];
-}
-
 include 'header.php';
 
 $conn = getDBConnection();
 
+// Validate recipe ID using techniques from notes
 $recipe_id = $_GET['id'] ?? 0;
 
+// Check if it's numeric and positive (from your notes' pattern)
+if (!is_numeric($recipe_id) || $recipe_id <= 0) {
+    echo "<p>Invalid recipe ID.</p>";
+    exit;
+}
+
+// Cast to integer for safety
+$recipe_id = (int)$recipe_id;
 
 $stmt = $conn->prepare("SELECT * FROM idm232_recipes WHERE recipe_id = ?");
 $stmt->bind_param("i", $recipe_id);
+// ... rest of code
 $stmt->execute();
 $result = $stmt->get_result();
-
 
 if ($result && $result->num_rows > 0) {
     $recipe = $result->fetch_assoc();
@@ -34,56 +37,49 @@ if ($result && $result->num_rows > 0) {
     echo "<p>Recipe not found.</p>";
     exit;
 }
+
 $stmt->close();
 $conn->close();
 ?>
 
 <section class="single-container">
+    <div class="single-intro">
+        <div class="single-title">
+            <h1><?= $recipeName ?></h1>
+            <h3><?= $recipeName2 ?></h3>
 
-        <div class="single-intro">
-            <div class="single-title">
-                <h1><?= $recipeName ?></h1>
-                <h3><?= $recipeName2 ?></h3>
-
-                <div class="single-description">
-                    <p><?= $description ?></p>
-                </div>
-            </div>
-
-            <div class="single-img">
-                <?php if (!empty($hero)): ?>
-                    <img src="<?= $hero ?>" alt="Hero Image" class="hero-image">
-                <?php endif; ?>
+            <div class="single-description">
+                <p><?= $description ?></p>
             </div>
         </div>
 
-        <div class="recipe-info">
-            <div class="ingredients">
-                <?php if (!empty($ingredientsImage)): ?>
-                    <img src="<?= $ingredientsImage ?>" alt="Ingredients Image">
-                <?php endif; ?>
-
-                <hr>
-                <h3>
-                    Ingredients
-                </h3>
-                <p>
-                    <?= $ingredients ?>
-                </p>
-                <br>
-                <hr>
-            </div>
-
-
-            <div class="single-steps">
-                <h3>Steps</h3>
-            <p> 
-                <?= $steps ?>
-            </p>
-            </div>
+        <div class="single-img">
+            <?php if (!empty($hero)): ?>
+                <img src="<?= $hero ?>" alt="<?= $recipeName ?>" class="hero-image">
+            <?php endif; ?>
         </div>
-    </section>
+    </div>
 
-    <?php
-    include 'footer.php';
-    ?>
+    <div class="recipe-info">
+        <div class="ingredients">
+            <?php if (!empty($ingredientsImage)): ?>
+                <img src="<?= $ingredientsImage ?>" alt="Ingredients Image">
+            <?php endif; ?>
+
+            <hr>
+            <h3>Ingredients</h3>
+            <p><?= $ingredients ?></p>
+            <br>
+            <hr>
+        </div>
+
+        <div class="single-steps">
+            <h3>Steps</h3>
+            <p><?= $steps ?></p>
+        </div>
+    </div>
+</section>
+
+<?php
+include 'footer.php';
+?>

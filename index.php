@@ -1,37 +1,18 @@
 <?php
 require_once 'config.php';
-
-$searchTerm = "";
-if (!empty($_GET['search'])) {
-    $searchTerm = $_GET['search'];
-}
 include 'header.php';
 
 $conn = getDBConnection();
 
-// prepared statement
+// Get newest 10 recipes
+$stmt = $conn->prepare(
+    "SELECT recipe_id, recipe_heading, recipe_subheading, hero, description, steps
+     FROM idm232_recipes 
+     ORDER BY recipe_id DESC
+     LIMIT 10"
+);
 
-if ($searchTerm === "") {
-    $stmt = $conn->prepare(
-        "SELECT recipe_id, recipe_heading, recipe_subheading, hero 
-         FROM idm232_recipes 
-         ORDER BY recipe_id DESC
-         LIMIT 10"
-    );
-} else {
-    // filter by heading
-    $stmt = $conn->prepare(
-        "SELECT recipe_id, recipe_heading, recipe_subheading, hero 
-         FROM idm232_recipes 
-         WHERE recipe_heading LIKE ? 
-         ORDER BY recipe_id DESC"
-    );
-
-    $like = "%".$searchTerm."%";
-    $stmt->bind_param("s", $like);
-}
-
-// execute
+// Execute
 if ($stmt === false) {
     die("Prepare failed: " . htmlspecialchars($conn->error));
 }
@@ -45,8 +26,7 @@ if (!$result) {
     die("Getting result failed: " . htmlspecialchars($stmt->error));
 }
 
-// get recipe
-
+// Get recipes
 $recipes = [];
 while ($row = $result->fetch_assoc()) {
     $recipes[] = $row;
@@ -69,28 +49,14 @@ $conn->close();
 <section class="home-recipes">
     <h2>Newly Added Recipes</h2>
 
-
     <div class="newRecipeContainer">
-
         <?php
         if (empty($recipes)) {
             echo "<p>No recipes found.</p>";
         }
 
-        // show recipes
         foreach ($recipes as $recipe) {
-            $recipe_id = $recipe['recipe_id'];
-            $recipe_heading = $recipe['recipe_heading'];
-            $recipe_subheading = $recipe['recipe_subheading'];
-            $hero = $recipe['hero'];
-
-            echo '<div class="recipeCard">';
-            echo '<a href="single-recipe.php?id=' . $recipe_id . '" style="text-decoration: none; color: inherit;">';
-            echo '<img src="' . htmlspecialchars($recipe['hero']) . '" alt="Hero Image" class="hero-image">';
-            echo '<h2 class="recipe_heading">' . htmlspecialchars($recipe_heading) . '</h2>';
-            echo '<h3 class="recipe_subheading">' . htmlspecialchars($recipe_subheading) . '</h3>';
-            echo '</a>';
-            echo '</div>';
+            include 'recipecard.php';
         }
         ?>
     </div>

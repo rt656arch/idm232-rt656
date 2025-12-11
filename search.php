@@ -13,15 +13,15 @@ if ($searchTerm === '') {
     exit;
 }
 
-// prepared statement
+// Prepared statement - Search multiple fields using CONCAT
 $stmt = $conn->prepare(
     "SELECT recipe_id, recipe_heading, recipe_subheading, hero 
      FROM idm232_recipes 
-     WHERE recipe_heading LIKE ? OR recipe_subheading LIKE ? 
+     WHERE CONCAT(recipe_heading, ' ', recipe_subheading, ' ', description, ' ', ingredients) LIKE ?
      ORDER BY recipe_id DESC"
 );
-$like = "%$searchTerm%";
-$stmt->bind_param("ss", $like, $like);
+$like = "%{$searchTerm}%";
+$stmt->bind_param("s", $like);
 
 $stmt->execute();
 $result = $stmt->get_result();
@@ -33,13 +33,7 @@ $result = $stmt->get_result();
         <?php
         if ($result->num_rows > 0) {
             while ($recipe = $result->fetch_assoc()) {
-                echo '<div class="recipeCard">';
-                echo '<a href="single-recipe.php?id=' . $recipe['recipe_id'] . '" style="text-decoration:none;color:inherit;">';
-                echo '<img src="' . htmlspecialchars($recipe['hero']) . '" alt="Hero Image" class="hero-image">';
-                echo '<h2 class="recipe_heading">' . htmlspecialchars($recipe['recipe_heading']) . '</h2>';
-                echo '<h3 class="recipe_subheading">' . htmlspecialchars($recipe['recipe_subheading']) . '</h3>';
-                echo '</a>';
-                echo '</div>';
+                include 'recipecard.php';
             }
         } else {
             echo "<p>No recipes found.</p>";
