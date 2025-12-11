@@ -25,9 +25,9 @@ if ($result && $result->num_rows > 0) {
 
     $recipeName = htmlspecialchars($recipe['recipe_heading']);
     $recipeName2 = htmlspecialchars($recipe['recipe_subheading']);
-    $description = nl2br(htmlspecialchars($recipe['description']));
-    $ingredients = nl2br(htmlspecialchars($recipe['ingredients']));
-    $steps = nl2br(htmlspecialchars($recipe['steps']));
+    $description = htmlspecialchars($recipe['description']);
+    $ingredients = htmlspecialchars($recipe['ingredients']);
+    $steps = htmlspecialchars($recipe['steps']);
     $hero = htmlspecialchars($recipe['hero']);
     $ingredientsImage = htmlspecialchars($recipe['ingredients_image']);
     $stepsImages = htmlspecialchars($recipe['steps_images']);
@@ -60,21 +60,47 @@ $conn->close();
 
     <div class="recipe-info">
         <div class="ingredients">
-            <?php if (!empty($ingredientsImage)): ?>
-                <img src="<?= $ingredientsImage ?>" alt="Ingredients Image">
-            <?php endif; ?>
+    <?php if (!empty($ingredientsImage)): ?>
+        <img src="<?= $ingredientsImage ?>" alt="Ingredients Image">
+    <?php endif; ?>
 
-            <hr>
-            <h3>Ingredients</h3>
-            <p><?= $ingredients ?></p>
-            <br>
-            <hr>
-        </div>
+    <hr>
+    <h3>Ingredients</h3>
+    
+    <ul class="ingredients-list">
+        <?php
+        $ingredientsArray = explode("*", $ingredients);
+
+        foreach ($ingredientsArray as $ingredient) {
+            if (!empty($ingredient)) {
+                echo '<li>' . htmlspecialchars($ingredient) . '</li>';
+            }
+        }
+        ?>
+    </ul>
+    
+    <hr>
+</div>
 
         <div class="single-steps">
-            <h3>Steps</h3>
-            <p><?= $steps ?></p>
-        </div>
+    <h3>Steps</h3>
+    <?php
+    $stepsArray = explode('*', $steps);
+    $stepsArray = array_filter(array_map('trim', $stepsArray));
+    
+
+    $stepNumber = 1;
+    foreach ($stepsArray as $step) {
+        if (!empty($step)) {
+            echo '<div class="step-item">';
+            echo '<span class="step-number">' . $stepNumber . '.</span>';
+            echo '<p class="step-text">' . htmlspecialchars($step) . '</p>';
+            echo '</div>';
+            $stepNumber++;
+        }
+    }
+    ?>
+</div>
     </div>
 </section>
 
